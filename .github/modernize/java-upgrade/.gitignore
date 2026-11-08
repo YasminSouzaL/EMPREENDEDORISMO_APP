@@ -1,0 +1,14 @@
+### Java / Maven ###
+target/
+HELP.md
+
+### VS Code ###
+.vscode/
+
+### H2 ###
+*.mv.db
+*.trace.db
+
+### Sistema ###
+Thumbs.db
+.DS_Store
