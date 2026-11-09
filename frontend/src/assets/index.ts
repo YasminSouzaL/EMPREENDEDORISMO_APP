@@ -1,0 +1,6 @@
+export { default as enigma } from './enigma.svg'
+export { default as rotors } from './rotors.svg'
+export { default as keyboard } from './keyboard.svg'
+export { default as calendarPreview } from './workspace-1.svg'
+export { default as classroomPreview } from './workspace-2.svg'
+export { default as teamPreview } from './workspace-3.svg'
