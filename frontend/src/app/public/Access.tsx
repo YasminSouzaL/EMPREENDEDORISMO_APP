@@ -58,6 +58,12 @@ export function Access({ registration = false }: { registration?: boolean }) {
         <Button type="submit" className="button-primary" disabled={pending} iconAfter={ArrowRight}>{pending ? 'Aguarde…' : registration ? 'Criar escola' : 'Entrar'}</Button>
       </form>
       {!registration && <>
+        <div className="flex flex-wrap items-center gap-3 border-t border-line pt-3">
+          <Button disabled={pending} onClick={() => { portal.enterAsVisitor(); navigate('/portal', { replace: true }) }}>
+            Entrar como visitante
+          </Button>
+          <small className="text-muted">Consulte o portal com dados de exemplo, sem fazer login.</small>
+        </div>
         <p>Primeiro acesso? <Link to="/cadastro">Cadastre sua escola</Link>.</p>
       </>}
     </div>
