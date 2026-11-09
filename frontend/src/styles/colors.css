@@ -1,0 +1,43 @@
+:root {
+  --ink: #24201c;
+  --muted: #635a51;
+  --line: #d9cfc3;
+  --surface: #fffcf7;
+  --canvas: #f5f0e8;
+  --accent: #85451f;
+  --accent-soft: #f3e4d4;
+  --amber-light: #fcd4a0;
+  --dark: #231d19;
+  --dark-panel: #30231e;
+  --dark-line: #5b483b;
+  --on-dark: #f9ecdc;
+  --on-dark-muted: #cbb8a8;
+  --green: #245833;
+  --green-soft: #e1ecde;
+  --amber: #6f440f;
+  --amber-soft: #f8e7c6;
+  --red: #842e28;
+  --red-soft: #f8e4df;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-surface: var(--surface);
+  --color-canvas: var(--canvas);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-amber-light: var(--amber-light);
+  --color-dark: var(--dark);
+  --color-dark-panel: var(--dark-panel);
+  --color-dark-line: var(--dark-line);
+  --color-on-dark: var(--on-dark);
+  --color-on-dark-muted: var(--on-dark-muted);
+  --color-green: var(--green);
+  --color-green-soft: var(--green-soft);
+  --color-amber: var(--amber);
+  --color-amber-soft: var(--amber-soft);
+  --color-red: var(--red);
+  --color-red-soft: var(--red-soft);
+}
