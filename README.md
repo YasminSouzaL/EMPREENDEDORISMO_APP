@@ -1,119 +1,36 @@
-# Protótipo do Aplicativo Educativo
+# Portal Enigma
 
-## 1. Sobre o projeto
+Protótipo de um portal de gestão escolar com site institucional e área de trabalho para administração, direção, professores e equipe.
 
-Este repositório contém o desenvolvimento do protótipo funcional de um aplicativo educativo.
+## Executar
 
-O objetivo é construir uma aplicação que utilize tecnologia para apoiar o ambiente escolar, contribuindo para o ensino e a aprendizagem.
+Use Node.js 20.19+ da linha 20 ou Node.js 22.12+ e um JDK 17 ou superior.
 
-A solução será desenvolvida considerando as necessidades identificadas junto à escola. As funcionalidades definitivas serão estabelecidas conforme a evolução do projeto.
+Em `frontend/`:
 
-## 2. Objetivo do protótipo
-
-Desenvolver uma versão inicial e funcional do aplicativo, permitindo visualizar, navegar e testar suas principais telas e funcionalidades.
-
-O protótipo não deve ser composto apenas por telas estáticas. Os elementos da interface deverão apresentar comportamentos funcionais.
-
-## 3. Tecnologias utilizadas
-
-### Front-end
-- HTML5: estrutura das telas.
-- CSS3: estilização e layout.
-- JavaScript: interações, validações e comunicação com o servidor.
-
-### Back-end
-- Java: implementação da lógica da aplicação.
-- Spring Boot: framework previsto para criação da API REST.
-
-### Comunicação
-- API REST.
-- HTTP.
-- JSON.
-
-### Banco de dados
-A tecnologia será definida conforme as funcionalidades necessárias ao protótipo.
-
-## 4. Arquitetura
-
-A aplicação será dividida em duas partes principais:
-
-**Front-end:** responsável pela interface visual, navegação, formulários e interação com o usuário.
-
-**Back-end:** responsável pelo processamento das informações, validações, regras de negócio e comunicação com o banco de dados.
-
-O front-end realizará requisições à API desenvolvida em Java.
-
-## 5. Requisitos do protótipo
-
-- Interface simples e intuitiva.
-- Navegação funcional entre telas.
-- Botões com ações implementadas.
-- Formulários com validação.
-- Integração entre front-end e back-end.
-- Retorno de mensagens de sucesso e erro.
-- Persistência de dados quando necessária.
-- Código organizado e de fácil manutenção.
-
-## 6. Telas do aplicativo
-
-As telas serão definidas e implementadas durante o desenvolvimento do protótipo.
-
-Cada tela deverá possuir uma finalidade específica e estar integrada ao fluxo de navegação da aplicação.
-
-A documentação dos fluxos e das telas ficará em `docs/telas-e-fluxos.md`.
-
-## 7. Estrutura do repositório
-
-```text
-prototipo-app/
-├── README.md
-├── frontend/
-│   ├── index.html
-│   ├── css/
-│   ├── js/
-│   └── pages/
-├── backend/
-│   ├── pom.xml
-│   └── src/
-└── docs/
-    └── telas-e-fluxos.md
+```powershell
+npm ci
+npm run dev
 ```
 
-## 8. Como executar
+Abra o endereço exibido pelo Vite. Na página **Acessar portal**, escolha **Entrar como visitante** para navegar pela agenda e pelo catálogo de exemplo. Todos os cargos usam o mesmo formulário de login. A autenticação e o cadastro de escolas dependem dos endpoints pendentes descritos em [Integração](knowledges/integracao.md).
 
-### Front-end
+Em outro terminal, abra `backend/` e inicie o Spring em `localhost:8080`:
 
-1. Acesse a pasta `frontend`.
-2. Abra o arquivo `index.html` em um navegador ou utilize a extensão Live Server do VS Code.
+```powershell
+.\mvnw.cmd spring-boot:run
+```
 
-### Back-end
+Com o Maven já instalado, também é possível executar `mvn spring-boot:run`. Aponte `JAVA_HOME` para o diretório do JDK se o Maven solicitar essa configuração.
 
-1. Acesse a pasta `backend`.
-2. Execute o projeto Spring Boot.
-3. Verifique se a API está disponível.
-4. Configure a URL da API no front-end.
+A integração reutiliza a lista de alunos, o cadastro de alunos e a lista de trilhas. O Vite encaminha essas chamadas pelo prefixo `/api`. Use `VITE_API_BASE_URL` no build se a API estiver em outro endereço. Em uma hospedagem estática, configure também o fallback das rotas para `index.html`.
 
-Os comandos definitivos de execução serão documentados após a configuração do projeto.
+## Verificar
 
-## 9. Etapas de desenvolvimento
+Em `frontend/`, execute `npm run build` para verificar tipos e gerar `dist/`. Use `npm run preview` para servir esse build localmente.
 
-1. Definição do fluxo de navegação.
-2. Criação das telas com HTML e CSS.
-3. Implementação das interações com JavaScript.
-4. Desenvolvimento da API em Java.
-5. Integração entre front-end e back-end.
-6. Implementação das funcionalidades.
-7. Testes de navegação e funcionamento.
-8. Ajustes e melhorias do protótipo.
+## Escopo do protótipo
 
-## 10. Status do projeto
+A agenda, as atividades e a personalização da identidade escolar usam armazenamento do navegador. O cargo e os vínculos vêm da API de sessão e controlam o conteúdo exibido no layout administrativo compartilhado. O catálogo de disciplinas, séries, turmas e horários é ilustrativo. A API atual tem uma base de alunos compartilhada e não fornece presença online, autenticação ou isolamento entre escolas. Use dados fictícios.
 
-**Fase atual:** desenvolvimento do protótipo funcional.
-
-As funcionalidades e telas serão atualizadas conforme o desenvolvimento e a validação da proposta.
-
-## 11. Observação
-
-Este repositório é destinado exclusivamente ao código-fonte, às telas, aos fluxos e à documentação técnica do protótipo.
-
-Os questionários e materiais referentes à pesquisa com a escola são mantidos separadamente no Google Drive.
+As convenções do projeto estão em [AGENTS.md](AGENTS.md) e [knowledges](knowledges/).
