@@ -26,15 +26,30 @@ public class Aluno {
 
     private Integer pontos = 0;
 
+
+   
+
+    //senha
+    @NotBlank 
+    private String senha;
+
+
+    @ManyToOne
+    @JoinColumn(name = "pais_id", nullable = false)
+    private Pais pais;
     public Aluno() {
     }
 
-    public Aluno(String nome, String matricula, String turma, Trilha trilha) {
+    public Aluno(String nome, String matricula, String turma, Trilha trilha, String senha,Pais pais) {
         this.nome = nome;
         this.matricula = matricula;
         this.turma = turma;
         this.trilha = trilha;
         this.pontos = 0;
+        this.senha = senha;
+        this.pais = pais;
+
+        
     }
 
     public Long getId() {
@@ -80,4 +95,9 @@ public class Aluno {
     public void setPontos(Integer pontos) {
         this.pontos = pontos;
     }
+
+    public Pais getPais() { return pais; }
+    public void setPais(Pais pais) { this.pais = pais; }
+    public String getSenha() { return senha; }
+    public void setSenha(String senha) { this.senha = senha; }
 }
