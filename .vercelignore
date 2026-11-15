@@ -1,0 +1,16 @@
+backend/
+.qa/
+.agents/
+.github/
+.vscode/
+scripts/
+knowledges/
+**/node_modules/
+**/dist/
+**/target/
+**/.vercel/
+**/.env
+**/.env.local
+**/.env.*.local
+**/.env.properties
+*.log

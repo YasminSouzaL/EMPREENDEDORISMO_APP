@@ -2,6 +2,13 @@
 
 ## Vercel
 
+Projetos criados na equipe `isglannas-projects`:
+
+- Administrativo: `enigma-admin` (`prj_IjUDymjXb3C0YELmLgZq4DVx4JRf`), https://enigma-admin-eight.vercel.app.
+- Aluno: `enigma-student` (`prj_zdBbNFEWQwdxe4Vaujf1VJCY6ZPE`), https://enigma-student.vercel.app.
+
+Os primeiros deploys foram realizados por upload local e passaram no build. A conexão automática com o GitHub foi recusada por falta de acesso ao repositório privado. Após torná-lo público ou conceder acesso ao app Vercel, conecte o mesmo repositório aos dois projetos. Não é necessário recriá-los.
+
 Publique dois projetos do mesmo repositório. Use Node.js 22 e preserve o acesso aos arquivos fora da raiz do projeto para que o npm resolva os workspaces e o lockfile em `frontend/`.
 
 | Configuração | Administrativo | Aluno |
