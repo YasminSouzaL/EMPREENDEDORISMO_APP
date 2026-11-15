@@ -2,7 +2,7 @@
 
 - Os sites estão separados em `frontend/admin` e `frontend/student`.
 - O backend recebeu implementações dos contratos de autenticação, responsáveis, convites, aprendizagem, gamificação e atividades extras. Os trechos históricos abaixo descrevem a base anterior e não são a referência para as novas rotas.
-- O projeto Neon `portal-enigma` tem ID `odd-bread-35548888`, banco `enigma`. V1 e V2 foram aplicadas e validadas na branch `mvp-validation-20261114`; o fluxo real de publicação, resposta, persistência e ranking passou nessa branch. Credenciais locais ficam fora do Git. Isso não constitui uma auditoria completa de isolamento e concorrência.
+- O projeto Neon `portal-enigma` tem ID `odd-bread-35548888`, banco `enigma`. V1 e V2 foram aplicadas e validadas na branch `mvp-validation-20261114` e depois aplicadas no banco principal. O fluxo real de publicação, resposta, persistência e ranking passou na branch de validação; a escola fictícia permanece somente nela. Credenciais locais ficam fora do Git. Isso não constitui uma auditoria completa de isolamento e concorrência.
 - As novas telas não simulam sucesso quando a API está indisponível. Os testes visuais usam respostas fictícias restritas à automação de QA.
 - O acervo público contém 500 questões, todas identificadas como ENEM. A revisão docente deve preceder a publicação para estudantes.
 - Não há deploy de produção verificado nem serviço de IA generativa configurado.
@@ -11,6 +11,7 @@
 - Cada resposta registra questão, conteúdo, habilidade, acerto e tempo em `learning.results`. O Analytics administrativo agrega as evidências por aluno, disciplina, questão e habilidade e oferece recomendações por regras. Resultados agregados antigos contribuem para áreas, sem atribuir erros a questões individuais.
 - O login administrativo não exibe a máquina Enigma. O aluno usa visual claro, vibrante e arredondado. Os dois builds de produção usam a API pública do Render por padrão; consulte `deploy.md` para configurar os projetos e o CORS.
 - A escola demonstrativa é opcional e exige `ENIGMA_DEMO_ENABLED=true` e senha explícita. O seed não altera uma escola demonstrativa já existente.
+- Validação do MVP: build conjunto aprovado, sete testes de Analytics/ranking no frontend e cinco testes no backend (contexto e quatro fluxos). CORS DELETE foi conferido por HTTP. O navegador validou login, disciplina com conteúdo, resposta corrigida e Analytics com as evidências persistidas.
 
 ## Histórico da base inicial
 
