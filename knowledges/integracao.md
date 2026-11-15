@@ -1,3 +1,19 @@
+# Estado atual da integração
+
+- Os sites estão separados em `frontend/admin` e `frontend/student`.
+- O backend recebeu implementações dos contratos de autenticação, responsáveis, convites, aprendizagem, gamificação e atividades extras. Os trechos históricos abaixo descrevem a base anterior e não são a referência para as novas rotas.
+- O projeto Neon `portal-enigma` tem ID `odd-bread-35548888`, banco `enigma`. V1 e V2 foram aplicadas e validadas na branch `mvp-validation-20261114`; o fluxo real de publicação, resposta, persistência e ranking passou nessa branch. Credenciais locais ficam fora do Git. Isso não constitui uma auditoria completa de isolamento e concorrência.
+- As novas telas não simulam sucesso quando a API está indisponível. Os testes visuais usam respostas fictícias restritas à automação de QA.
+- O acervo público contém 500 questões, todas identificadas como ENEM. A revisão docente deve preceder a publicação para estudantes.
+- Não há deploy de produção verificado nem serviço de IA generativa configurado.
+- Conteúdos docentes usam CRUD em `/teaching/contents`; atividades e simulados são publicados em `/teaching/activities`, com edição de título/prazo e arquivamento que preserva as evidências.
+- O aluno consulta `/student/courses`, `/student/activities`, `/student/groups` e `/student/ranking`. Somente integrantes podem renomear seu grupo. A média acadêmica do grupo é a média das notas individuais de 0 a 10, calculadas de todos os acertos da disciplina/turma; integrantes sem respostas têm zero.
+- Cada resposta registra questão, conteúdo, habilidade, acerto e tempo em `learning.results`. O Analytics administrativo agrega as evidências por aluno, disciplina, questão e habilidade e oferece recomendações por regras. Resultados agregados antigos contribuem para áreas, sem atribuir erros a questões individuais.
+- O login administrativo não exibe a máquina Enigma. O aluno usa visual claro, vibrante e arredondado. Os dois builds de produção usam a API pública do Render por padrão; consulte `deploy.md` para configurar os projetos e o CORS.
+- A escola demonstrativa é opcional e exige `ENIGMA_DEMO_ENABLED=true` e senha explícita. O seed não altera uma escola demonstrativa já existente.
+
+## Histórico da base inicial
+
 # Integração do Portal Enigma
 
 O Spring atual expõe `GET /alunos`, `POST /alunos` e `GET /trilhas`. O cadastro de aluno recebe `nome`, `matricula`, `turma` e `trilhaId`. A base é compartilhada e a API não envia presença online. Use dados fictícios. O mapa associa alunos pelo rótulo da turma e informa quando a presença está indisponível.

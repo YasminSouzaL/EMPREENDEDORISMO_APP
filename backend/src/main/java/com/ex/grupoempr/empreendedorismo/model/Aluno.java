@@ -25,6 +25,10 @@ public class Aluno {
     private Trilha trilha;
 
     private Integer pontos = 0;
+    private String schoolId;
+
+    public String getSchoolId() { return schoolId; }
+    public void setSchoolId(String schoolId) { this.schoolId = schoolId; }
 
     public Aluno() {
     }

@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true,
+    "types": ["vite/client"],
+    "paths": {
+      "@": ["./src"], "@/*": ["./src/*"],
+      "@app": ["./src/app"], "@app/*": ["./src/app/*"],
+      "@api": ["./src/api"], "@api/*": ["./src/api/*"],
+      "@assets": ["./src/assets"], "@assets/*": ["./src/assets/*"],
+      "@context": ["./src/context"], "@context/*": ["./src/context/*"],
+      "@hook": ["./src/hook"], "@hook/*": ["./src/hook/*"],
+      "@components": ["./src/components"], "@components/*": ["./src/components/*"],
+      "@atoms": ["./src/components/atoms"], "@atoms/*": ["./src/components/atoms/*"],
+      "@molecules": ["./src/components/molecules"], "@molecules/*": ["./src/components/molecules/*"],
+      "@organisms": ["./src/components/organisms"], "@organisms/*": ["./src/components/organisms/*"],
+      "@styles": ["./src/styles"], "@styles/*": ["./src/styles/*"]
+    }
+  },
+  "include": ["src", "vite.config.ts"]
+}

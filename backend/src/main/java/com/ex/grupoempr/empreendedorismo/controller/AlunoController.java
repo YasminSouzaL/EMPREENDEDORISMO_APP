@@ -15,17 +15,21 @@ public class AlunoController {
 
     private final AlunoRepository alunoRepository;
     private final TrilhaRepository trilhaRepository;
+    private final com.ex.grupoempr.empreendedorismo.portal.PortalAuthService auth;
 
     public AlunoController(
             AlunoRepository alunoRepository,
-            TrilhaRepository trilhaRepository) {
+            TrilhaRepository trilhaRepository, com.ex.grupoempr.empreendedorismo.portal.PortalAuthService auth) {
 
         this.alunoRepository = alunoRepository;
         this.trilhaRepository = trilhaRepository;
+        this.auth = auth;
     }
 
     @PostMapping
-    public Aluno cadastrar(@RequestBody AlunoDto dto) {
+    public Aluno cadastrar(@RequestHeader(value="Authorization",required=false) String token, @RequestBody AlunoDto dto) {
+        var actor=auth.require(token); auth.requireManager(actor);
+        if(dto.getNome()==null || dto.getNome().isBlank() || dto.getMatricula()==null || dto.getMatricula().isBlank() || dto.getTurma()==null || dto.getTurma().isBlank()) throw new org.springframework.web.server.ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST);
 
         Trilha trilha = trilhaRepository.findById(dto.getTrilhaId())
                 .orElseThrow(() -> new RuntimeException("Trilha não encontrada"));
@@ -37,12 +41,14 @@ public class AlunoController {
         aluno.setTurma(dto.getTurma());
         aluno.setTrilha(trilha);
         aluno.setPontos(0);
+        aluno.setSchoolId(actor.schoolId());
 
         return alunoRepository.save(aluno);
     }
 
     @GetMapping
-    public List<Aluno> listar() {
-        return alunoRepository.findAll();
+    public List<Aluno> listar(@RequestHeader(value="Authorization",required=false) String token) {
+        var actor=auth.require(token);
+        return alunoRepository.findAll().stream().filter(student -> auth.canReadStudent(actor,student)).toList();
     }
 }

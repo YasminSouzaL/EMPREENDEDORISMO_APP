@@ -1,0 +1,16 @@
+.env
+.env.*
+!.env.example
+!.env.properties.example
+!frontend/admin/.env.production
+!frontend/student/.env.production
+**/.env.properties
+**/node_modules/
+**/dist/
+**/target/
+**/.npm-cache/
+*.log
+**/.vite/
+.qa/
+.vercel/
+*-before.png
