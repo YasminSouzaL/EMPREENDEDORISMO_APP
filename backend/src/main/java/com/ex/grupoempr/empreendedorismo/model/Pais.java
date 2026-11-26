@@ -1,5 +1,7 @@
 package com.ex.grupoempr.empreendedorismo.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -18,11 +20,14 @@ public class Pais {
 
     @NotBlank(message = "Email é obrigatório")
     @Email(message = "Email inválido")
+    @Column(unique = true, nullable = false)
     private String email;
 
     @NotBlank(message = "Senha é obrigatória")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String senha;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "pais", cascade = CascadeType.ALL)
     private List<Aluno> alunos;
 
