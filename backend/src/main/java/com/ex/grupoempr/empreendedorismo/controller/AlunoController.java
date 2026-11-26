@@ -5,9 +5,13 @@ import com.ex.grupoempr.empreendedorismo.model.Trilha;
 import com.ex.grupoempr.empreendedorismo.model.dto.AlunoDto;
 import com.ex.grupoempr.empreendedorismo.repository.AlunoRepository;
 import com.ex.grupoempr.empreendedorismo.repository.TrilhaRepository;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/alunos")
@@ -16,6 +20,10 @@ public class AlunoController {
     private final AlunoRepository alunoRepository;
     private final TrilhaRepository trilhaRepository;
 
+    Optional<Aluno> findByEmail(String email) {
+        return null;
+    }
+    
     public AlunoController(
             AlunoRepository alunoRepository,
             TrilhaRepository trilhaRepository) {
@@ -37,6 +45,7 @@ public class AlunoController {
         aluno.setTurma(dto.getTurma());
         aluno.setTrilha(trilha);
         aluno.setPontos(0);
+        aluno.setSenha(null);
 
         return alunoRepository.save(aluno);
     }
@@ -44,5 +53,10 @@ public class AlunoController {
     @GetMapping
     public List<Aluno> listar() {
         return alunoRepository.findAll();
+    }
+
+    public ResponseEntity<?> login(Map<String,String> credenciais) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'login'");
     }
 }

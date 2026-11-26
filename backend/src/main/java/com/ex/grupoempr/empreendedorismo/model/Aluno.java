@@ -26,6 +26,9 @@ public class Aluno {
 
     private Integer pontos = 0;
 
+    private String email;
+    
+
 
    
 
@@ -40,7 +43,7 @@ public class Aluno {
     public Aluno() {
     }
 
-    public Aluno(String nome, String matricula, String turma, Trilha trilha, String senha,Pais pais) {
+    public Aluno(String nome, String matricula, String turma, Trilha trilha, String senha,Pais pais, String email) {
         this.nome = nome;
         this.matricula = matricula;
         this.turma = turma;
@@ -48,6 +51,7 @@ public class Aluno {
         this.pontos = 0;
         this.senha = senha;
         this.pais = pais;
+        this.email = email;
 
         
     }
@@ -100,4 +104,12 @@ public class Aluno {
     public void setPais(Pais pais) { this.pais = pais; }
     public String getSenha() { return senha; }
     public void setSenha(String senha) { this.senha = senha; }
+
+    public  String getEmail(){
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
