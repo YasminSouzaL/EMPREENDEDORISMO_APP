@@ -37,11 +37,7 @@ public class Aluno {
 
     private Integer pontos = 0;
 
-    private String email;
-    
 
-
-   
 
     //senha
     @NotBlank 
@@ -57,17 +53,14 @@ public class Aluno {
     public Aluno() {
     }
 
-    public Aluno(String nome, String matricula, String turma, Trilha trilha, String senha,Pais pais, String email) {
+    public Aluno(String nome, String matricula, String turma, Trilha trilha, String senha,Pais pais) {
         this.nome = nome;
         this.matricula = matricula;
         this.turma = turma;
         this.trilha = trilha;
         this.pontos = 0;
         this.senha = senha;
-        this.pais = pais;
-        this.email = email;
-
-        
+        this.pais = pais;        
     }
 
     public Long getId() {
@@ -90,14 +83,7 @@ public class Aluno {
         this.matricula = matricula;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
+   
     public String getTurma() {
         return turma;
     }
@@ -135,11 +121,5 @@ public class Aluno {
     public String getSenha() { return senha; }
     public void setSenha(String senha) { this.senha = senha; }
 
-    public  String getEmail(){
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+   
 }
