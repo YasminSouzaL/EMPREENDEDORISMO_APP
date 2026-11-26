@@ -1,6 +1,9 @@
 package com.ex.grupoempr.empreendedorismo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
@@ -17,12 +20,20 @@ public class Aluno {
     @Column(unique = true, nullable = false)
     private String matricula;
 
+    @Email(message = "Email inválido")
+    @Column(unique = true)
+    private String email;
+
     @NotBlank(message = "Turma é obrigatória")
     private String turma;
 
     @ManyToOne
     @JoinColumn(name = "trilha_id")
     private Trilha trilha;
+
+    @ManyToOne
+    @JoinColumn(name = "escola_id")
+    private Escola escola;
 
     private Integer pontos = 0;
 
@@ -34,12 +45,15 @@ public class Aluno {
 
     //senha
     @NotBlank 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String senha;
 
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "pais_id", nullable = false)
     private Pais pais;
+
     public Aluno() {
     }
 
@@ -76,6 +90,14 @@ public class Aluno {
         this.matricula = matricula;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getTurma() {
         return turma;
     }
@@ -90,6 +112,14 @@ public class Aluno {
 
     public void setTrilha(Trilha trilha) {
         this.trilha = trilha;
+    }
+
+    public Escola getEscola() {
+        return escola;
+    }
+
+    public void setEscola(Escola escola) {
+        this.escola = escola;
     }
 
     public Integer getPontos() {

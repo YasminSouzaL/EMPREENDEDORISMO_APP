@@ -5,13 +5,12 @@ import com.ex.grupoempr.empreendedorismo.model.Trilha;
 import com.ex.grupoempr.empreendedorismo.model.dto.AlunoDto;
 import com.ex.grupoempr.empreendedorismo.repository.AlunoRepository;
 import com.ex.grupoempr.empreendedorismo.repository.TrilhaRepository;
-
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/alunos")
@@ -55,8 +54,15 @@ public class AlunoController {
         return alunoRepository.findAll();
     }
 
-    public ResponseEntity<?> login(Map<String,String> credenciais) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'login'");
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody Map<String, String> credenciais) {
+        String email = credenciais.get("email");
+        String senha = credenciais.getOrDefault("password", credenciais.get("senha"));
+
+        return alunoRepository.findByEmail(email)
+                .filter(aluno -> senha != null && aluno.getSenha().equals(senha))
+                .<ResponseEntity<?>>map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body("E-mail ou senha inválidos"));
     }
 }
