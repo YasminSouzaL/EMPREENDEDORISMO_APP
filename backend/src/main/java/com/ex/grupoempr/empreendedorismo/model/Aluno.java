@@ -35,7 +35,10 @@ public class Aluno {
     @JoinColumn(name = "escola_id")
     private Escola escola;
 
-    private Integer pontos = 0;
+    private Integer pontos = 0;]
+
+    @Column(unique = true)
+    private String email;
 
 
 
@@ -53,14 +56,15 @@ public class Aluno {
     public Aluno() {
     }
 
-    public Aluno(String nome, String matricula, String turma, Trilha trilha, String senha,Pais pais) {
+    public Aluno(String nome, String matricula, String turma, Trilha trilha, String senha,Pais pais, String email) {
         this.nome = nome;
         this.matricula = matricula;
         this.turma = turma;
         this.trilha = trilha;
         this.pontos = 0;
         this.senha = senha;
-        this.pais = pais;        
+        this.pais = pais;
+        this.email = email;
     }
 
     public Long getId() {
@@ -114,6 +118,13 @@ public class Aluno {
 
     public void setPontos(Integer pontos) {
         this.pontos = pontos;
+    }
+    public String getEmail() {
+        return email;
+    }
+    
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Pais getPais() { return pais; }
