@@ -139,7 +139,6 @@ public class AuthController {
     private final AlunoRepository alunoRepository;
     private final ConcurrentMap<String, AuthSession> sessions = new ConcurrentHashMap<>();
 
-    @Autowired
     public AuthController(ProfessorRepository professorRepository, AlunoRepository alunoRepository) {
         this.professorRepository = professorRepository;
         this.alunoRepository = alunoRepository;
