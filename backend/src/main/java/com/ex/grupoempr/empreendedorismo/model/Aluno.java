@@ -35,18 +35,11 @@ public class Aluno {
     @JoinColumn(name = "escola_id")
     private Escola escola;
 
-    private Integer pontos = 0;]
+    private Integer pontos = 0;
 
-    @Column(unique = true)
-    private String email;
-
-
-
-    //senha
-    @NotBlank 
+    @NotBlank
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String senha;
-
 
     @JsonBackReference
     @ManyToOne
@@ -56,7 +49,7 @@ public class Aluno {
     public Aluno() {
     }
 
-    public Aluno(String nome, String matricula, String turma, Trilha trilha, String senha,Pais pais, String email) {
+    public Aluno(String nome, String matricula, String turma, Trilha trilha, String senha, Pais pais, String email) {
         this.nome = nome;
         this.matricula = matricula;
         this.turma = turma;
@@ -87,7 +80,6 @@ public class Aluno {
         this.matricula = matricula;
     }
 
-   
     public String getTurma() {
         return turma;
     }
@@ -119,18 +111,28 @@ public class Aluno {
     public void setPontos(Integer pontos) {
         this.pontos = pontos;
     }
+
     public String getEmail() {
         return email;
     }
-    
+
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public Pais getPais() { return pais; }
-    public void setPais(Pais pais) { this.pais = pais; }
-    public String getSenha() { return senha; }
-    public void setSenha(String senha) { this.senha = senha; }
+    public Pais getPais() {
+        return pais;
+    }
 
-   
+    public void setPais(Pais pais) {
+        this.pais = pais;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 }
